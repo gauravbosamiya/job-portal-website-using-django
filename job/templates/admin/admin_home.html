@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %} Admin | Home {% endblock %}
+{% block css %}
+.c{
+    transition: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    background: #D5DFE5;
+}
+.c:hover{
+    border:solid 1px black;
+    background: #21D192;
+}
+.g{
+    background:#2C3134;
+}
+
+
+{% endblock %}
+{% block body %}
+    {% include 'admin/admin_navbar.html' %}
+
+    <div class="container-fluid">
+        <div class="row mt-5 mb-5">
+            <div class="col-md-4 mx-auto">
+                <div class="c card shadow-lg mb-3">
+                    <div class="g card-header">
+                        <h4 class="text-center text-light">Total Recruiter</h4>
+                    </div>
+                    <div class="x card-body">
+                        <h2 class="text-center fw-bold">{{recruiter}}</h2>
+                        <div class="text-center">
+                            <a href="{% url 'all-recruiter' %}" class="btn btn-outline-dark btn-sm">Recruiters</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mx-auto">
+                <div class="c card shadow-lg">
+                    <div class="g card-header">
+                        <h4 class="text-center text-light">Total User</h4>
+                    </div>
+                    <div class="x card-body">
+                        <h2 class="text-center fw-bold">{{user}}</h2>
+                        <div class="text-center">
+                            <a  href="{% url 'view-users' %}" class="btn btn-outline-dark btn-sm">Users</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mx-auto mt-3 mb-5 shadow">
+            <div class="card-header">
+              <h3 class="text-center fw-bold">Job Posted By Recruiter</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-primary table-hover table-striped">
+                <thead>
+                  <tr>
+                      <th class="text-light bg-dark text-center">Recruiter Name</th>
+                      <th class="text-light bg-dark text-center">Job Title</th>
+                      <th class="text-light bg-dark text-center">Email</th>
+                      <th class="text-light bg-dark text-center">Mobile</th>
+                      <th class="text-light bg-dark text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   {% for job in job %}
+                  <tr>
+                    <td class="text-center">{{ job.recruiter.user.first_name }} {{ job.recruiter.user.last_name }}</td>
+                    <td class="text-center">{{ job.title }}</td>
+                    <td class="text-center">{{ job.recruiter.user }}</td>
+                    <td class="text-center">{{ job.recruiter.mobile }}</td>
+                    <td class="text-center"><a href="{% url 'admin-delete-job' job.id %}" class="btn btn-dark btn-sm">Delete</a> </td>
+
+                  </tr>
+
+                 {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

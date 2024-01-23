@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Recruiter | Job List {% endblock %}
+{% block body %}
+    {% include 'recruiter/recruiter_navbar.html' %}
+
+    <div class="container">
+        <div class="card mt-4 mb-5 shadow">
+            <div class="card-header">
+                <h3 class="fw-bold text-center">Job List</h3>
+            </div>
+             {% if messages %}
+            {% for message in messages %}
+           <div class="alert alert-success alert-dismissible fade show" role="alert">
+              Hey, {{request.user.first_name}} <strong>{{message}}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="table-responsive">
+                <table class="table table-primary table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="bg-dark text-light text-center">Id</th>
+                            <th class="bg-dark text-light text-center">Job Title</th>
+                            <th class="bg-dark text-light text-center">Start Date</th>
+                            <th class="bg-dark text-light text-center">End Date</th>
+                            <th class="bg-dark text-light text-center">Action</th>
+                            <th class="bg-dark text-light text-center">Messages</th>
+                        </tr>
+                    </thead>
+                     <tbody>
+                     {% for data in data %}
+                        <tr>
+                            <td class="text-center">{{data.id}}</td>
+                            <td class="text-center">{{data.title}}</td>
+                            <td class="text-center">{{data.start_date}}</td>
+                            <td class="text-center">{{data.end_date}}</td>
+                            <td class="text-center">
+                               <a href="{% url  'delete-job' data.id %}" class="btn btn-danger btn-sm mt-1">Delete</a>
+                                <a href="{% url 'update-job' data.id %}" class="btn btn-light btn-sm mt-1">Update</a>
+
+                            </td>
+                            <td class="text-center">
+                                <a href="{% url 'job-messages' data.id %}" class="btn btn-danger btn-sm mt-1">Show Messages</a>
+                            </td>
+                        </tr>
+                     {% endfor %}
+                     </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

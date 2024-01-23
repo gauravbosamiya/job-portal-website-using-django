@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Recruiter | Profile {% endblock %}
+{% load static %}
+{% block css %}
+    .x{
+        background: linear-gradient(to right, rgb(0 0 0 / 1),rgb(0 0 0 / 0)),
+        url({% static 'bg_images/green.jpg' %});
+        background-size:cover;
+        background-position: center;
+    }
+    @keyframes card{
+    0%{
+      transform:scale(0.85);
+    }
+
+    50%{
+       transform:scale(0.83);
+    }
+    100%{
+         transform:scale(0.85);
+    }
+}
+    .card{
+        animation: card 2s infinite;
+    }
+
+{% endblock %}
+{% block body %}
+    {% include 'recruiter/recruiter_navbar.html' %}
+
+    <div class="x container-fluid">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card mb-4 shadow-lg bg-light">
+                    <img src="{{data.image.url}}" class="rounded-circle mt-2 mx-auto" width="240" height="300">
+                    <div class="card-body text-dark text-center">
+                        <h3>{{data.company}}</h3>
+                        <h1>{{request.user.first_name}} {{request.user.last_name}}</h1>
+
+                        <h5>{{data.status}} request as a {{data.type}} by Admin</h5>
+                         <p>{{data.user}}</p>
+                        <button class="btn btn-dark"><a href="{% url 'update-recruiter' data.id %}" class="nav-link">Update Profile</a> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

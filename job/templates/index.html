@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block title %} JobFind | Home {% endblock %}
+{% load static %}
+{% block css %}
+<!--.card{-->
+<!--    transition:all;-->
+<!--    transition-duration: 0.5s;-->
+<!--    transition-timing-function: ease-in-out;-->
+
+<!--}-->
+<!--.card:hover{-->
+<!--    box-shadow: black 0px 5px 15px;-->
+<!--}-->
+<!--.main{-->
+<!--        font-size:20px;-->
+<!--    }-->
+<!--    @keyframes card{-->
+<!--    0%{-->
+<!--       transform:scale(1);-->
+<!--    }-->
+
+<!--    50%{-->
+<!--        transform:scale(1.07);-->
+<!--    }-->
+<!--    100%{-->
+<!--        transform:scale(1);-->
+<!--    }-->
+<!--}-->
+<!--    .main{-->
+<!--        animation: card 2s infinite;-->
+<!--    }-->
+{% endblock %}
+{% block body %}
+    {% include 'navbar.html' %}
+
+    <div class="container-fluid d-flex h-100 text-center text-dark" style="background-color:#FFF4F6;">
+
+            <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+             <main class="py-5 my-5">
+                <div class="fs-1 fw-bold">Get Your Dream Job !</div>
+                <p class="lead">Job portals, or job boards, are sites where you can advertise jobs and search for resumes.Job portals, or job boards, are sites where you can advertise jobs and search for resumes.</p>
+                <p class="main">
+                  <a href="{% url 'user-login'%}" class="btn btn-lg btn-dark text-white ps-5 pe-5">Login</a>
+                </p>
+              </main>
+            </div>
+
+    </div>
+    <div class="container">
+        <div class="text-center my-5">
+        <h1 class="fw-bold">Where startups and job seekers connect</h1>
+    </div>
+        <div class="row my-5">
+            <div class="col-md-6 mx-auto mb-5">
+                <a href="{% url 'recruiter-login' %}" class="ms-2 mt-2 btn btn-dark btn-lg p-3">Find Your Next hire</a>
+                <a href="{% url 'user-login' %}" class="ms-2 mt-2 btn btn-outline-dark btn-lg p-3">Find Your Next Job</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-white" style="background-color:#210D25">
+        <div class="row">
+            <div class="col-md-6 my-5">
+                <label class="ms-5 mb-4">Got talent?</label>
+                <h3 class="ms-5 mb-5 fw-bold">Why job seekers love us</h3>
+                <div class="mb-5 ms-5">
+                    <img class="img-fluid rounded-circle bg-white" height="50" width="50" src="https://assets-global.website-files.com/64626a4a74818ca87606a29e/646574e6df60830cc7c2b88b_stairs-up.svg">
+                    <span class="ms-2">Connect directly with founders at top startups</span>
+                </div>
+                <div class="mb-5 ms-5">
+                    <img class="img-fluid rounded-circle bg-white" height="50" width="50" src="https://assets-global.website-files.com/64626a4a74818ca87606a29e/646574e63b04b79dd28c1ca3_books.svg">
+                    <span class="ms-2">Connect directly with founders at top startups</span>
+                </div>
+                <div class="mb-5 ms-5">
+                    <img class="img-fluid rounded-circle bg-white" height="50" width="50" src="https://assets-global.website-files.com/64626a4a74818ca87606a29e/646574e670c0dd6f22eee061_tap.svg">
+                    <span class="ms-2">Connect directly with founders at top startups</span>
+                </div>
+                <div class="mb-5 ms-5">
+                     <img class="img-fluid rounded-circle bg-white" height="50" width="50" src="https://assets-global.website-files.com/64626a4a74818ca87606a29e/646574e7342fe2d5b929e48c_stars.svg">
+                    <span class="ms-2">Connect directly with founders at top startups</span>
+                </div>
+                <a href="{% url 'user-signup' %}" class="ms-5 btn btn-light fw-bold">SignUp</a>
+            </div>
+            <div class="col-md-6 my-5">
+                <label class="ms-5 mb-4">Need talent?</label>
+                <h3 class="ms-5 mb-5 fw-bold">Why recruiters love us</h3>
+                <div class="mb-5 ms-5">
+                    <img class="img-fluid rounded-circle bg-white" height="50" width="50" src="https://assets-global.website-files.com/64626a4a74818ca87606a29e/646574e6df60830cc7c2b88b_stairs-up.svg">
+                    <span class="ms-2">Tap into a community of 10M+ engaged, startup-ready candidates.</span>
+                </div>
+                <div class="mb-5 ms-5">
+                    <img class="img-fluid rounded-circle bg-white" height="50" width="50" src="https://assets-global.website-files.com/64626a4a74818ca87606a29e/646574e63b04b79dd28c1ca3_books.svg">
+                    <span class="ms-2">Everything you need to kickstart your recruiting — set up job posts.</span>
+                </div>
+                <div class="mb-5 ms-5">
+                    <img class="img-fluid rounded-circle bg-white" height="50" width="50" src="https://assets-global.website-files.com/64626a4a74818ca87606a29e/646574e670c0dd6f22eee061_tap.svg">
+                    <span class="ms-2">A free applicant tracking system, or free integration with any...</span>
+                </div>
+                <div class="mb-5 ms-5">
+                    <img class="img-fluid rounded-circle bg-white" height="50" width="50" src="https://assets-global.website-files.com/64626a4a74818ca87606a29e/646574e7342fe2d5b929e48c_stars.svg">
+                    <span class="ms-2">Let us handle the heavy-lifting with RecruiterCloud.</span>
+                </div>
+                <a href="{% url 'recruiter-signup' %}" class="ms-5 btn btn-light fw-bold">SignUp</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="background-color:#FFF4F6;">
+        <div class="row">
+            <h1 class="my-5 text-center fw-bold">JobFind<label class="text-danger">:</label></h1>
+        </div>
+    </div>
+
+<!--        <div class="row mt-4">-->
+<!--            {% if messages %}-->
+<!--            {% for message in messages %}-->
+<!--            <div class="alert alert-danger alert-dismissible fade show" role="alert">-->
+<!--              <strong>{{message}}</strong>-->
+<!--              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--            {% endif %}-->
+<!--             {% if job %}-->
+<!--            {% for job in job %}-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="card  mb-5">-->
+<!--                    <div class="card-header">-->
+
+<!--                        <p>{{job.recruiter.company}}</p>-->
+<!--                        <h3>{{job.title}}</h3>-->
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+
+<!--                        <p>{{job.description | slice:":100"}}</p>-->
+<!--                         <div class="mb-2">{{job.location}}</div>-->
+<!--                        <span class="fw-bold">&#8377; {{job.salary | floatformat}}</span>-->
+<!--                    </div>-->
+<!--                    <div class="card-footer">-->
+<!--                        <a href="{% url 'user-login' %}" class="btn btn-outline-success btn-sm mb-2">Apply Now</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--            {% endif %}-->
+<!--        </div>-->
+
+
+{% endblock %}

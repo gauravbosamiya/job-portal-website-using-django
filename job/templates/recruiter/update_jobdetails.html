@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Recruiter | Update Job Details {% endblock %}
+
+{% block body %}
+    {% include 'recruiter/recruiter_navbar.html' %}
+
+    <div class="container">
+        <div class="col-md-12 mx-auto">
+            <div class="card mt-4 mb-5 mx-auto shadow">
+                <div class="card-header">
+                    <h3 class="text-center fw-bold mt-2">Update Job</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label class="form-label">Job Title</label>
+                          <input type="text" class="form-control" name="title" value="{{update.title}}" placeholder="Enter Your Job Title" required>
+                        </div>
+                        <div class=" mb-3">
+                            <label class="form-label">Job Description</label>
+                            <input type="text" class="form-control" name="description" value="{{update.description}}" placeholder="Enter Your Job Description" maxlength="400" required>
+                        </div>
+                        <div class=" mb-3">
+                            <label class="form-label">Skills</label>
+                            <input type="text" class="form-control" name="skills" value="{{update.skills}}" placeholder="Enter Your Skills" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Company Location</label>
+                            <input type="text" class="form-control" name="location" value="{{update.location}}" placeholder="Enter Location" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                 <label class="form-label">Salary</label>
+                              <input type="text" class="form-control" name="salary" value="{{update.salary}}" placeholder="" required>
+
+                            </div>
+                             <div class="col-md-6 mb-3">
+                                 <label class="form-label">Experience (In Years)</label>
+                                 <input type="number" class="form-control" name="experience" value="{{update.experience}}" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{update.start_date}}</label>
+                                <input type="date" class="form-control" name="start_date" value="{{update.start_date}}" placeholder="" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{update.end_date}}</label>
+                              <input type="date" class="form-control" name="end_date" value="{{update.end_date}}" placeholder="" required>
+                            </div>
+                        </div>
+<!--                        <img src="/profile/{{update.image}}" class="rounded mb-2" width="55px" height="70px">-->
+<!--                        <div class="input-group mb-3">-->
+<!--                            <input type="file" class="form-control" name="img" id="inputGroupFile02">-->
+<!--                            <label class="input-group-text" for="inputGroupFile02">Upload</label>-->
+<!--                        </div>-->
+                        <div class="text-center mt-4">
+                            <input type="submit" value="Update" class="btn btn-success form-control">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

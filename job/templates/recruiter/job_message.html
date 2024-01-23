@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Recruiter | Applied Candidate{% endblock %}
+{% block body %}
+    {% include 'recruiter/recruiter_navbar.html' %}
+
+<div class="container-fluid my-4">
+    {% if msg %}
+    {% for msg in msg %}
+    <div class="alert alert-dark d-flex flex-column text-dark" role="alert">
+        <small>From : {{ msg.sender.first_name }} {{ msg.sender.last_name }}</small>
+        <strong class="mt-2 text-success"><small>Message:</small></strong>
+        <div class="d-flex">
+            <div>{{ msg.content }}</div>
+            <div class="ms-auto">
+                <small>{{ msg.timestamp }}</small>
+            </div>
+        </div>
+<!--        <div class="row mt-3">-->
+<!--            <div class="col-md-8">-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <input type="submit" value="Send" class="btn btn-success">-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+      <strong>No Messages Found....!</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %} Admin | All Recruiter {% endblock %}
+{% block body %}
+    {% include 'admin/admin_navbar.html' %}
+
+    <div class="container">
+        <div class="card mt-3 shadow">
+            <div class="card-header">
+                <h3 class="text-center fw-bold">View All Recruiter</h3>
+            </div>
+<!--            <div class="card-body">-->
+                <div class="table-responsive">
+                    <table class="table table-primary table-striped table-hover">
+                        <thead>
+                            <tr>
+                              <th scope="col">Id</th>
+                                <th scope="col">Username</th>
+                              <th scope="col">email</th>
+                              <th scope="col">Mobile</th>
+                                <th scope="col">Company</th>
+                                <th scope="col">Staus</th>
+                              <th scope="col">Image</th>
+                              <th scope="col">Gender</th>
+                              <th scope="col">Type</th>
+
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                         <tbody>
+                         {% for data in data %}
+                            <tr>
+                              <td>{{data.id}}</td>
+                              <td>{{data.user.first_name}} {{data.user.last_name}}</td>
+                              <td>{{data.user}}</td>
+                              <td>{{data.mobile}}</td>
+                                <td>{{data.company}}</td>
+                                <td>{{data.status}}</td>
+                              <td><img src="{{data.image.url}}" class="rounded" width="55px" height="70px"></td>
+                              <td>{{data.gender}}</td>
+                              <td>{{data.type}}</td>
+                              <td>
+                                  <a href="{% url 'delete-user' data.user.id %}" class="btn btn-danger btn-sm">Delete</a><br>
+                                 <a href="{% url 'change-status' data.id %}" class="btn btn-dark btn-sm mt-2">ChangeStatus</a>
+                              </td>
+                            </tr>
+                          {% endfor %}
+                         </tbody>
+                    </table>
+                </div>
+
+        </div>
+    </div>
+{% endblock %}

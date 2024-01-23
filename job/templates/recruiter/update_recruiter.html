@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Recruiter | Update Profile {% endblock %}
+
+{% block body %}
+    {% include 'recruiter/recruiter_navbar.html' %}
+
+    <div class="container">
+        <div class="col-md-6 mx-auto">
+        <div class="card mt-2 mb-5 mx-auto shadow">
+                <div class="card-header">
+                    <h3 class="text-center fw-bold mt-2">Update Recruiter</h3>
+                </div>
+                <div class="p-3">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{message}}</strong>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 form-floating mb-3">
+                              <input type="text" class="form-control" name="firstname" value="{{request.user.first_name}}" placeholder="Enter Firstname">
+                              <label class="ms-3">Firstname</label>
+                            </div>
+                            <div class="col-md-6 form-floating mb-3">
+                              <input type="text" class="form-control" name="lastname" value="{{request.user.last_name}}"  placeholder="Enter Lastname">
+                              <label class="ms-3">Lastname</label>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="text" class="form-control" name="company" value="{{data.company}}" readonly>
+                          <label>Company</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="text" class="form-control" name="contact" value="{{data.mobile}}" placeholder="enter phone number">
+                          <label>Contact Number</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="email" class="form-control" name="email" value="{{request.user}}" readonly>
+                          <label>Email address</label>
+                        </div>
+                        {% if data.gender == "Male" %}
+                            <div class="col-sm-10">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender"  id="gridRadios1" value="Male" checked>
+                                <label class="form-check-label" for="gridRadios1">
+                                  Male
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female">
+                                <label class="form-check-label" for="gridRadios2">
+                                  Female
+                                </label>
+                              </div>
+                            </div>
+                            {% else %}
+                            <div class="col-sm-10">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender"  id="gridRadios1" value="Male">
+                                <label class="form-check-label" for="gridRadios1">
+                                  Male
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" id="gridRadios2"  value="Female" checked>
+                                <label class="form-check-label" for="gridRadios2">
+                                  Female
+                                </label>
+                              </div>
+                            </div>
+                            {% endif %}
+                          </fieldset>
+
+                        <div class="input-group mb-3">
+                          <input type="file" class="form-control" name="img" id="inputGroupFile02" required>
+                          <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <input type="submit" value="Update Profile" class="btn btn-success form-control">
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+            </div>
+        </div>
+{% endblock %}

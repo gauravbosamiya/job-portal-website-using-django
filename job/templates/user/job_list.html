@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %} User | Job List {% endblock %}
+
+{% block css %}
+.card{
+    transition:all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+
+}
+.card:hover{
+    box-shadow: black 0px 5px 15px;
+}
+.wrapper{
+    display:flex;
+}
+
+{% endblock %}
+{% block body %}
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+              <strong>{{message}}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="row mt-5">
+            {% for job in jobs %}
+            <div class="col-md-6">
+                <div class="card mb-5">
+                    <div class="card-header">
+                        <div class="wrapper mb-3">
+                            <img src="{{job.image.url}}" class="rounded-circle img-fluid" height="50" width="50">
+                            <p class="ms-2 mt-1 fw-bold">{{job.recruiter.company}}</p>
+                        </div>
+                        <h3>{{job.title}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>{{job.description | slice:":100"}}</p>
+                        <div>{{job.location}}</div>
+                        <div class="mt-2 fw-bold">&#8377; {{job.salary | floatformat}}</div>
+                    </div>
+                    <div class="card-footer">
+                        {% if job.id in applied_job_ids %}
+                        <div class="text-danger">Already Applied</div>
+                        {% else %}
+                        <a href="{% url 'job-details' job.id %}" class="btn btn-outline-success btn-sm mb-2">Apply Now</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

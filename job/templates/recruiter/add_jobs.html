@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Recruiter | Add New Jobs{% endblock %}
+{% block body %}
+    {% include 'recruiter/recruiter_navbar.html' %}
+
+    <div class="container">
+        <div class="card mt-4 mb-5 mx-auto shadow-lg">
+            <div class="card-header">
+                <h3 class="text-center fw-bold mt-2">Add New Job</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" name="title" placeholder="Enter Your Job Title" required>
+                      <label>Job Title</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" name="description" placeholder="Enter Your Job Description" maxlength="400" required></textarea>
+                      <label>Job Description</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                              <input type="text" class="form-control" name="skills" placeholder="Enter Your Skills" required>
+                              <label>Skills</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                              <input type="text" class="form-control" name="location" placeholder="Enter Location" required>
+                              <label>Company Location</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                          <input type="text" class="form-control" name="salary" placeholder="" required>
+                          <label class="ms-3">Salary</label>
+                        </div>
+                         <div class="col-md-6 form-floating mb-3">
+                          <input type="number" class="form-control" name="experience" placeholder="" required>
+                          <label class="ms-3">Experience (In Years)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                          <input type="date" class="form-control" name="start_date" placeholder="" required>
+                          <label class="ms-3">Start Date</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                          <input type="date" class="form-control" name="end_date"  placeholder="" required>
+                          <label class="ms-3">End Date</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                          <input type="file" class="form-control" name="img" id="inputGroupFile02">
+                          <label class="input-group-text" for="inputGroupFile02">Upload </label>
+                    </div>
+                    <div class="text-center mt-4">
+                        <input type="submit" value="Add Job" class="btn btn-success form-control">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

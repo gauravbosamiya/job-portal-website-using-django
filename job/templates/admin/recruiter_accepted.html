@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %} Admin | Status Accepted {% endblock %}
+{% block body %}
+    {% include 'admin/admin_navbar.html' %}
+
+<div class="container">
+        <div class="card mt-3 shadow">
+            <div class="card-header">
+                <h3 class="fw-bold text-success text-center">View Accepted Recruiter</h3>
+            </div>
+                <div class="table-responsive">
+                    <table class="table table-success table-striped table-hover">
+                        <thead>
+                            <tr>
+                              <th scope="col">Id</th>
+                                <th scope="col">Username</th>
+                              <th scope="col">email</th>
+                              <th scope="col">Mobile</th>
+                                <th scope="col">Company</th>
+                                <th scope="col">Staus</th>
+                              <th scope="col">Image</th>
+                              <th scope="col">Gender</th>
+                              <th scope="col">Type</th>
+
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                         <tbody>
+                         {% for data in data %}
+                            <tr>
+                              <td>{{data.id}}</td>
+                              <td>{{data.user.first_name}} {{data.user.last_name}}</td>
+                              <td>{{data.user}}</td>
+                              <td>{{data.mobile}}</td>
+                                <td>{{data.company}}</td>
+                                <td>{{data.status}}</td>
+                              <td><img src="{{data.image.url}}" class="rounded" width="55px" height="70px"></td>
+                              <td>{{data.gender}}</td>
+                              <td>{{data.type}}</td>
+                              <td><a href="{% url 'change-status' data.id %}" class="btn btn-dark btn-sm">Change Status</a> </td>
+                            </tr>
+                          {% endfor %}
+                         </tbody>
+                    </table>
+                </div>
+        </div>
+</div>
+{% endblock %}

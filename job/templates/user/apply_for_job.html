@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} User | Resume {% endblock %}
+{% block body %}
+    {% include 'navbar.html' %}
+
+<div class="container">
+   <div class="row">
+       <div class="col-md-6 mx-auto">
+            <div class="card shadow mt-5 mb-5">
+                  <div class="card-header text-center">
+                    <h4>Upload Your Resume Here</h4>
+                  </div>
+                  <div class="card-body mt-4">
+                      <form method="POST" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          <div class="form-group">
+                            <input type="file" class="form-control" name="resume" required>
+                          </div>
+                           <input type="submit" value="Upload Resume" class="form-control btn btn-success my-4">
+                      </form>
+                  </div>
+            </div>
+       </div>
+   </div>
+</div>
+
+
+{% endblock %}

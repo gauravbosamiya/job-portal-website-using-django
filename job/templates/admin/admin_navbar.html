@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    ul li a
+    {
+     transition: all;
+      transition-duration: 0.2s;
+     transition-timing-function: ease-out;
+    }
+    ul li a:hover{
+        background-color: #198754;
+        color:white !important;
+    }
+    .dropdown-item:hover{
+        background-color:#198754;
+    }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="{% url 'admin-home' %}"><img src="{% static 'bg_images/job_logo.png' %}" width="120"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'admin-home' %}">Admin Home</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#">Recruiters</a>
+                  <div class="dropdown-menu">
+                      <a href="{% url 'recruiter-pending' %}" class="dropdown-item">Pending Recruiter</a>
+                      <a href="{% url 'recruiter-rejected' %}" class="dropdown-item">Rejected Recruiter</a>
+                      <a href="{% url 'recruiter-accepted' %}" class="dropdown-item">Accepted Recruiter</a>
+                      <a href="{% url 'all-recruiter' %}" class="dropdown-item">All Recruiter</a>
+                  </div>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link text-dark" href="{% url 'view-users' %}">View Users</a>
+              </li>
+               <li class="nav-item">
+                  <a class="nav-link text-dark" href="{% url 'admin-logout' %}">Logout</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</body>
+</html>

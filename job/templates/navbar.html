@@ -1,0 +1,81 @@
+{% load static %}
+<style>
+    ul li a
+    {
+     transition: all;
+     transition-duration: 0.2s;
+     transition-timing-function: ease-out;
+
+    }
+    ul li a:hover{
+        background-color: #198754;
+        color:white !important;
+
+    }
+    .dropdown-item:hover{
+        background-color:#198754;
+        padding:10px;
+
+    }
+
+
+</style>
+<nav class="navbar navbar-expand-lg shadow-sm">
+  <div class="container-fluid">
+      {% if request.user.is_authenticated %}
+      <a class="navbar-brand fw-bold text-success" href="{% url 'user-joblist' %}"><img src="{% static 'bg_images/job_logo.png' %}" width="120"></a>
+      {% else %}
+      <a class="navbar-brand fw-bold text-success" href="{% url 'home' %}"><img src="{% static 'bg_images/job_logo.png' %}" width="120"></a>
+      {% endif %}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <form class="d-flex" role="search"  action="{% url 'job-search' %}" method="get">
+                <input class="form-control me-2 border border-dark" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark btn-sm" type="submit">Search</button>
+              </form>
+            </li>
+        </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link text-black me-1" href="{% url 'user-joblist' %}">Job List</a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link text-black me-1" href="{% url 'show-user-application' %}">My Application</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-black me-1" href="{% url 'user-profile' %}">Profile</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link text-black" href="{% url 'user-logout' %}">Logout</a>
+              </li>
+
+          {% else %}
+<!--              <li class="nav-item">-->
+<!--                  <a class="nav-link text-black me-1" href="{% url 'user-login' %}">User Login</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                  <a class="nav-link text-black me-1" href="{% url 'recruiter-login' %}">Recruiter Login</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                  <a class="nav-link text-black" href="{% url 'admin-login' %}">Admin Login</a>-->
+<!--              </li>-->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#">Login</a>
+              <div class="dropdown-menu dropdown-menu-end">
+                  <a href="{% url 'user-login' %}" class="dropdown-item">User</a>
+                  <a href="{% url 'recruiter-login' %}" class="dropdown-item">Recruiter</a>
+                  <a href="{% url 'admin-login' %}" class="dropdown-item">Admin</a>
+              </div>
+            </li>
+
+          {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
